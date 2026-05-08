@@ -1,0 +1,13 @@
+# Compilados / binários
+*.exe
+*.class
+
+# Pastas comuns de build
+bin/
+lib/
+/build/
+/dist/
+
+# Outros
+.DS_Store
+
