@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Newspaper - Copa do Mundo</title>
+<style>
+  body {
+    font-family: "Times New Roman", Times, serif;
+    background-color: #ffffff;
+    color: #000000;
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .topo {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #000;
+    padding-bottom: 8px;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 64px;
+    margin: 10px 0 0 0;
+    letter-spacing: 4px;
+  }
+
+  .subtitulo {
+    text-align: center;
+    font-size: 13px;
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid #000;
+    margin: 10px 0;
+  }
+
+  .menu {
+    text-align: center;
+    font-size: 13px;
+    padding: 8px 0;
+    border-top: 1px solid #000;
+    border-bottom: 2px solid #000;
+    margin-bottom: 20px;
+  }
+
+  .conteudo {
+    display: flex;
+    gap: 25px;
+  }
+
+  .coluna {
+    width: 50%;
+  }
+
+  .coluna h2 {
+    font-style: italic;
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .coluna h2.titulo-grande {
+    font-style: normal;
+    font-size: 26px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: justify;
+    margin-bottom: 10px;
+  }
+
+  .foto {
+    margin: 10px 0;
+  }
+
+  .foto img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .foto-pequena img {
+    height: 130px;
+  }
+
+  .foto-grande img {
+    height: 240px;
+  }
+
+  .legenda {
+    font-size: 11px;
+    font-style: italic;
+    color: #333;
+    margin-top: -5px;
+    margin-bottom: 15px;
+  }
+
+  .rodape {
+    border-top: 1px solid #000;
+    margin-top: 25px;
+    padding-top: 8px;
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 600px) {
+    .conteudo { flex-direction: column; }
+    .coluna { width: 100%; }
+    h1 { font-size: 42px; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="topo">
+    <span>Edição 1, 2026</span>
+    <span>Seu Favorito Diário</span>
+    <span>Rio de Janeiro, Brasil</span>
+  </div>
+
+  <h1>NEWSPAPER</h1>
+  <div class="subtitulo">Especial Copa do Mundo</div>
+
+  <hr>
+
+  <div class="menu">
+    Seleção Brasileira &nbsp;•&nbsp; Copa do Mundo &nbsp;•&nbsp; Futebol &nbsp;•&nbsp; Bastidores
+  </div>
+
+  <div class="conteudo">
+    <div class="coluna">
+      <h2>Base jovem anima a torcida</h2>
+      <p>A Seleção Brasileira chega à Copa do Mundo com uma mistura de jogadores experientes e nomes mais novos, revelados nas últimas temporadas. Nos treinos, chama atenção a velocidade dos contra-ataques e a liberdade dada aos mais jovens para tentar jogadas individuais.</p>
+      <p>A comissão técnica tem revezado os titulares nos amistosos e dado atenção especial à preparação física, importante para aguentar o calendário puxado do torneio.</p>
+      <div class="foto foto-pequena">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Training%20Brazilian%20national%20team%20before%20the%20match%20against%20Croatia%20at%20the%20FIFA%20World%20Cup%202014-06-11%20(1).jpg?width=500" alt="Seleção Brasileira em treino antes de partida da Copa do Mundo">
+      </div>
+      <div class="legenda">Seleção brasileira durante treino de preparação para a Copa.</div>
+    </div>
+
+    <div class="coluna">
+      <h2 class="titulo-grande">Brasil sonha com o hexa em 2026</h2>
+      <div class="foto foto-grande">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Brazil%20vs.%20Chile%20in%20Mineir%C3%A3o%2025.jpg?width=900" alt="Seleção brasileira em campo durante partida de Copa do Mundo">
+      </div>
+      <div class="legenda">Brasil em campo em partida de Copa do Mundo, no Mineirão.</div>
+      <p>Com sede dividida entre Estados Unidos, Canadá e México, a Copa de 2026 chega em formato novo: 48 seleções, número recorde, abrindo espaço para times menos tradicionais surpreenderem.</p>
+      <p>Para o torcedor brasileiro, fica a mesma pergunta de sempre a cada quatro anos: será que a taça volta pra casa dessa vez?</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <h2>Tecnologia muda o futebol das Copas</h2>
+  <p>O árbitro de vídeo mudou a forma como lances polêmicos são decididos. O processo é mais lento, mas reduz erros grosseiros que antes definiam jogos importantes.</p>
+  <div class="foto foto-pequena">
+    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Video%20assistant%20referee%20in%20Russia.jpg?width=500" alt="Árbitro consultando o VAR em partida de futebol">
+  </div>
+  <div class="legenda">Árbitro consulta o monitor do VAR durante uma partida.</div>
+  <p>A tecnologia de linha do gol e os sensores da bola oficial ajudam a marcar impedimentos e gols em poucos segundos, o que agiliza o jogo nas partidas decisivas.</p>
+  <p>Fora de campo, dados de corrida, velocidade e posicionamento ajudam as comissões técnicas a montar escalações e definir estratégias contra cada adversário.</p>
+
+  <div class="rodape">
+    <span>Newspaper - Especial Copa do Mundo</span>
+    <span>Página 1</span>
+  </div>
+
+</body>
+</html>
