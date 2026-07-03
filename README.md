@@ -11,8 +11,8 @@ Este repositório reúne projetos e exercícios feitos durante aulas. Cada pasta
 
 ## Estrutura geral
 
-- `SENAI 03.06.26/` → Projeto **Supermercado Online (PHP + MySQL via PDO)**
-- `SENAI 30.06.26/` → Projeto **Spotify (HTML/CSS/JS)**
+- Projeto **Supermercado Online (PHP + MySQL via PDO)**
+- Projeto **Spotify (HTML/CSS/JS)**
 - Pastas como `SENAI */` → outros exercícios em **HTML/PHP** (mini-sites)
 - Pastas fora de `SENAI` (ex.: `Java/`, `C/`, `Spotify/`, `Supermercado/`, etc.) → projetos/exercícios equivalentes ou variações
 
@@ -41,7 +41,7 @@ Procure por:
 
 ## Projetos em destaque
 
-### `SENAI 03.06.26/` — Supermercado Online (PHP)
+### Supermercado Online (PHP)
 
 **Objetivo**: simular um site de supermercado com **lista de produtos** e **carrinho**.
 
@@ -62,7 +62,7 @@ Procure por:
 
 ---
 
-### `SENAI 30.06.26/` — Spotify (HTML/CSS/JS)
+### Spotify (HTML/CSS/JS)
 
 **Objetivo**: UI estilo “Spotify” com playlist e player com controles.
 
@@ -124,17 +124,4 @@ Além das pastas `SENAI */`, existem pastas “soltas” que reproduzem o mesmo 
 
 ---
 
-## Observações
-
-- Se você ver links quebrados (ex.: `script.js` referenciando conteúdo de outro projeto), isso costuma ser consequência de reaproveitamento de arquivos entre exercícios. Verifique a pasta do mini-site e confirme se os arquivos referenciados estão realmente lá.
-- Este repositório foi enviado para GitHub com o conteúdo do diretório atual.
-
----
-
-## Contato / Próximos passos
-
-Se você quiser, eu posso também:
-- organizar cada mini-site com um `README` próprio dentro de cada pasta,
-- padronizar títulos e instruções de execução,
-- e atualizar links entre HTML/PHP e seus scripts.
 
