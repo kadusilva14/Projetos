@@ -1,0 +1,17 @@
+
+
+CREATE DATABASE IF NOT EXISTS calculadora_imc
+  DEFAULT CHARACTER SET utf8mb4
+  DEFAULT COLLATE utf8mb4_general_ci;
+
+USE calculadora_imc;
+
+CREATE TABLE IF NOT EXISTS registros_imc (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    peso DECIMAL(5,2) NOT NULL,
+    altura DECIMAL(4,2) NOT NULL,
+    imc DECIMAL(5,2) NOT NULL,
+    classificacao VARCHAR(50) NOT NULL,
+    data_calculo DATETIME DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
