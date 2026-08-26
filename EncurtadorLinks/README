@@ -1,0 +1,42 @@
+🔗 Gerenciador e Agrupador de Links (Encurta)
+
+Uma aplicação web simples, rápida e responsiva criada para organizar e categorizar URLs do dia a dia em um único lugar.
+
+---
+
+📌 Contexto & Projeto
+
+Com a navegação diária entre diversas plataformas de estudos, trabalho e lazer, o acúmulo de abas e URLs no navegador costuma gerar desorganização e perda de produtividade. Havia a necessidade de uma ferramenta centralizada para armazenar, visualizar e filtrar links importantes de forma simples e intuitiva.
+
+Desenvolver um gerenciador de links completo (*CRUD*) que permitisse:
+- Salvar novos links com título, URL e categoria (Lazer, Trabalho, Estudos, Geral)[cite: 1, 6, 7].
+- Listar todas as URLs salvas com identificação visual (favicons automáticos) e suporte a categorias[cite: 3, 4].
+- Deletar URLs obsoletas diretamente da interface[cite: 2, 4].
+- Prover uma API JSON no backend para consumo assíncrono via JavaScript[cite: 1, 2, 3, 4].
+
+Para atender aos requisitos, foram tomadas as seguintes decisões técnicas e de arquitetura:
+- Backend em PHP com PDO: Criação de endpoints leves com retorno em JSON (`api.php`, `api_listar.php`, `api_deletar.php`), garantindo consultas seguras com *Prepared Statements* para evitar *SQL Injection*[cite: 1, 2, 3, 5].
+- Banco de Dados MySQL: Modelagem da tabela `padrao` com campos indexados e suporte a tipos enumerados (`ENUM`) para restrição de categorias.
+- Frontend Dinâmico: Implementação de chamadas assíncronas com `fetch()` API (`app.js`) para cadastrar, carregar e remover itens sem recarregar a página[cite: 4].
+- Integração de Favicons: Utilização do serviço da Google Favicons API para identificar visualmente a qual plataforma cada link pertence[cite: 4].
+- Interface e Layout: Utilização do Bootstrap 5 para garantir um design responsivo, limpo e adaptável a telas de desktop e dispositivos móveis[cite: 6].
+
+- **Zero Recarregamento de Página:** Operações de escrita, leitura e exclusão fluídas através de chamadas AJAX/Fetch[cite: 4].
+- **Organização Visual:** Identificação instantânea dos links por categoria (*badges*) e ícone do site original (*favicons*)[cite: 4].
+- **Facilidade na Instalação:** Estrutura enxuta, desacoplada e facilmente executável em ambientes PHP/MySQL como XAMPP ou Docker.
+
+---
+
+🚀 Tecnologias Utilizadas
+
+- HTML5, CSS3, JavaScript (ES6+ / Fetch API), Bootstrap 5[cite: 4, 6]
+- PHP 8.x[cite: 1, 2, 3, 5]
+- MySQL / PDO[cite: 5, 7]
+
+---
+
+🛠️ Como Executar o Projeto
+
+1. **Clone o repositório:**
+   ```bash
+   git clone [https://github.com/seu-usuario/seu-repositorio.git](https://github.com/seu-usuario/seu-repositorio.git)
