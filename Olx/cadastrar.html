@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OLX - Cadastrar Produto</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body class="bg-light">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">OLX Hype</a>
+            <a href="index.html" class="btn btn-outline-light btn-sm">📷 Leitor QR Code</a>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+
+                <div class="card shadow-sm border-0">
+                    <div class="card-body p-4">
+                        <h3 class="card-title fw-bold mb-4 text-center">Cadastrar Novo Item</h3>
+
+                        <div id="mensagem-status" class="alert d-none" role="alert"></div>
+
+                        <div id="bloco-qrcode" class="text-center mb-4 d-none">
+                            <div id="qrcode" class="d-inline-block p-3 bg-white border rounded"></div>
+                            <p class="mt-2 mb-1 text-muted small">Código: <span id="qrcode-texto" class="fw-semibold"></span></p>
+                            <button type="button" id="btn-novo-cadastro" class="btn btn-sm btn-outline-secondary mt-2">Cadastrar outro item</button>
+                        </div>
+
+                        <form id="form-cadastrar" enctype="multipart/form-data">
+
+                            <div class="mb-3">
+                                <label for="nome" class="form-label fw-semibold">Nome do Produto</label>
+                                <input type="text" class="form-control" id="nome" name="nome" placeholder="Ex: Tênis Nike Air Jordan 1" maxlength="150" required>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="preco_item" class="form-label fw-semibold">Preço (R$)</label>
+                                    <input type="number" step="0.01" min="0.01" class="form-control" id="preco_item" name="preco_item" placeholder="250.00" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="categoria" class="form-label fw-semibold">Categoria</label>
+                                    <input type="text" class="form-control" id="categoria" name="categoria" placeholder="Ex: Calçados, HQs, Vinil" maxlength="50" required>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="estado_de_conservacao" class="form-label fw-semibold">Estado de Conservação</label>
+                                <select class="form-select" id="estado_de_conservacao" name="estado_de_conservacao" required>
+                                    <option value="" selected disabled>Selecione...</option>
+                                    <option value="Novo">Novo</option>
+                                    <option value="SemiNovo">SemiNovo</option>
+                                    <option value="Usado">Usado</option>
+                                    <option value="Restaurado">Restaurado</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="info_item" class="form-label fw-semibold">Descrição / Informações do Item</label>
+                                <textarea class="form-control" id="info_item" name="info_item" rows="3" placeholder="Detalhes sobre o item, tempo de uso, etc." required></textarea>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="imagem" class="form-label fw-semibold">Imagem do Produto</label>
+                                <input type="file" class="form-control" id="imagem" name="imagem" accept="image/png, image/jpeg, image/webp, image/gif" required>
+                                <div class="form-text">JPG, PNG, WEBP ou GIF, até 5MB.</div>
+                            </div>
+
+                            <div class="d-grid">
+                                <button type="submit" id="btn-salvar" class="btn btn-success btn-lg">Salvar e Gerar QR Code</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('form-cadastrar');
+        const alertStatus = document.getElementById('mensagem-status');
+        const btnSalvar = document.getElementById('btn-salvar');
+        const blocoQrcode = document.getElementById('bloco-qrcode');
+        const qrcodeDiv = document.getElementById('qrcode');
+        const qrcodeTexto = document.getElementById('qrcode-texto');
+        const btnNovoCadastro = document.getElementById('btn-novo-cadastro');
+
+        function mostrarAlerta(tipo, texto) {
+            alertStatus.classList.remove('d-none', 'alert-success', 'alert-danger');
+            alertStatus.classList.add(tipo === 'sucesso' ? 'alert-success' : 'alert-danger');
+            alertStatus.innerText = texto;
+        }
+
+        function gerarQrCodeVisual(codigo) {
+            qrcodeDiv.innerHTML = '';
+            new QRCode(qrcodeDiv, {
+                text: codigo,
+                width: 180,
+                height: 180
+            });
+            qrcodeTexto.innerText = codigo;
+            blocoQrcode.classList.remove('d-none');
+        }
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const formData = new FormData(form);
+
+            btnSalvar.disabled = true;
+            btnSalvar.innerText = "Salvando...";
+
+            fetch('cadastrar_produto.php', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.json())
+                .then(dados => {
+                    if (dados.sucesso) {
+                        mostrarAlerta('sucesso', dados.mensagem);
+                        gerarQrCodeVisual(dados.codigo_qr);
+                        form.classList.add('d-none');
+                    } else {
+                        mostrarAlerta('erro', dados.erro || 'Não foi possível salvar o produto.');
+                    }
+                })
+                .catch(erro => {
+                    mostrarAlerta('erro', 'Erro ao se comunicar com o servidor.');
+                    console.error("Erro no envio:", erro);
+                })
+                .finally(() => {
+                    btnSalvar.disabled = false;
+                    btnSalvar.innerText = "Salvar e Gerar QR Code";
+                });
+        });
+
+        btnNovoCadastro.addEventListener('click', function () {
+            form.reset();
+            form.classList.remove('d-none');
+            blocoQrcode.classList.add('d-none');
+            alertStatus.classList.add('d-none');
+        });
+    </script>
+</body>
+</html>
